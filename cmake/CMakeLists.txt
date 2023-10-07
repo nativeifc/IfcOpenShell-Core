@@ -60,8 +60,6 @@ option(BUILD_CONVERT "Build IfcConvert executable." ON)
 option(BUILD_DOCUMENTATION "Build IfcOpenShell Documentation." OFF)
 option(BUILD_EXAMPLES "Build example applications." ON)
 option(BUILD_GEOMSERVER "Build IfcGeomServer executable." ON)
-option(BUILD_IFCMAX "Build IfcMax, a 3ds Max plug-in, Windows-only." OFF)
-option(BUILD_QTVIEWER "Build IfcOpenShell Qt GUI Viewer" OFF) # QtViewer requires Qt6
 option(BUILD_PACKAGE "" OFF)
 
 option(WITH_OPENCASCADE "Enable geometry interpretation using Open CASCADE" ON)
@@ -1060,7 +1058,7 @@ endif()
 
 # Documentation
 if(BUILD_DOCUMENTATION)
-    set(CMAKE_MODULE_PATH "../docs/cmake")
+    set(CMAKE_MODULE_PATH "../docs/cpp-api")
     add_subdirectory(../docs docs)
 endif()
 
@@ -1070,18 +1068,6 @@ endif()
 
 if(BUILD_EXAMPLES)
     add_subdirectory(../src/examples examples)
-endif()
-
-if(BUILD_IFCMAX)
-    add_subdirectory(../src/ifcmax ifcmax)
-endif()
-
-if(WITH_CGAL)
-    add_subdirectory(../src/svgfill svgfill)        
-endif()
-
-if(BUILD_QTVIEWER)
-    add_subdirectory(../src/qtviewer qtviewer)
 endif()
 
 # CMake installation targets
